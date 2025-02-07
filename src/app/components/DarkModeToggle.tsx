@@ -4,10 +4,15 @@ interface DarkModeToggleProps {
 }
 
 export function DarkModeToggle({ isDarkMode, onToggle }: DarkModeToggleProps) {
+  const handleToggle = () => {
+    localStorage.setItem('darkMode', (!isDarkMode).toString());
+    onToggle();
+  };
+
   return (
     <div>
       <button
-        onClick={onToggle}
+        onClick={handleToggle}
         className={`p-2 rounded-full transition-all duration-300 shadow-lg
           ${isDarkMode 
             ? 'bg-gray-800 hover:bg-gray-700 hover:shadow-yellow-200/20' 
